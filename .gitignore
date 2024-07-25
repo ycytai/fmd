@@ -1,0 +1,12 @@
+__pycache__/
+__pycache__/*
+*.pyc
+.pytest_cache
+.DS_Store
+.coverage
+test.ipynb
+dist
+
+.env
+.venv
+.vscode

@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "fmd"
+version = "0.1.2"
+description = "Provide users with an easy-to-use interface to access data from the FMD API."
+authors = ["Yu Chen, Yang <ycy.tai@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.32.3"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+pre-commit = "^3.7.1"
+
+
+[tool.black]
+line-length = 100
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
