@@ -15,6 +15,9 @@ requests = "^2.32.3"
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
 pre-commit = "^3.7.1"
+pytest = "^8.3.1"
+pytest-mock = "^3.14.0"
+pytest-cov = "^5.0.0"
 
 
 [tool.black]
