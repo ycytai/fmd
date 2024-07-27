@@ -43,6 +43,132 @@ class TestStock:
         )
         assert response == {'data': 'vm_data'}
 
+    def test_get_dividend(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'dividend_data'}
+        start_year = 2022
+        end_year = 2023
+
+        response = self.stock.get_dividend(start_year=start_year, end_year=end_year)
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/stock/{self.symbol}/dividend',
+            params={'start_year': start_year, 'end_year': end_year},
+        )
+        assert response == {'data': 'dividend_data'}
+
+    def test_get_company(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'company_data'}
+
+        response = self.stock.get_company()
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/stock/{self.symbol}/company',
+        )
+        assert response == {'data': 'company_data'}
+
+    def test_get_revenue(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'revenue_data'}
+        start_year = 2022
+        start_month = 1
+        end_year = 2023
+        end_month = 12
+
+        response = self.stock.get_revenue(
+            start_year=start_year, start_month=start_month, end_year=end_year, end_month=end_month
+        )
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/stock/{self.symbol}/revenue',
+            params={
+                'start_year': start_year,
+                'start_month': start_month,
+                'end_year': end_year,
+                'end_month': end_month,
+            },
+        )
+        assert response == {'data': 'revenue_data'}
+
+    def test_get_financial_ratio(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'financial_ratio_data'}
+        start_year = 2022
+        start_quarter = 1
+        end_year = 2023
+        end_quarter = 4
+
+        response = self.stock.get_financial_ratio(
+            start_year=start_year,
+            start_quarter=start_quarter,
+            end_year=end_year,
+            end_quarter=end_quarter,
+        )
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/stock/{self.symbol}/financial-ratio',
+            params={
+                'start_year': start_year,
+                'start_quarter': start_quarter,
+                'end_year': end_year,
+                'end_quarter': end_quarter,
+            },
+        )
+        assert response == {'data': 'financial_ratio_data'}
+
+    def test_get_balance_sheet(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'balance_sheet_data'}
+        start_year = 2022
+        start_quarter = 1
+        end_year = 2023
+        end_quarter = 4
+
+        response = self.stock.get_balance_sheet(
+            start_year=start_year,
+            start_quarter=start_quarter,
+            end_year=end_year,
+            end_quarter=end_quarter,
+        )
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/stock/{self.symbol}/balance-sheet',
+            params={
+                'start_year': start_year,
+                'start_quarter': start_quarter,
+                'end_year': end_year,
+                'end_quarter': end_quarter,
+            },
+        )
+        assert response == {'data': 'balance_sheet_data'}
+
+    def test_get_income_statement(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'income_statement_data'}
+        start_year = 2022
+        start_quarter = 1
+        end_year = 2023
+        end_quarter = 4
+
+        response = self.stock.get_income_statement(
+            start_year=start_year,
+            start_quarter=start_quarter,
+            end_year=end_year,
+            end_quarter=end_quarter,
+        )
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/stock/{self.symbol}/income-statement',
+            params={
+                'start_year': start_year,
+                'start_quarter': start_quarter,
+                'end_year': end_year,
+                'end_quarter': end_quarter,
+            },
+        )
+        assert response == {'data': 'income_statement_data'}
+
 
 class TestStockManager:
     @pytest.fixture(autouse=True)
