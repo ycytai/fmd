@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "fmd"
-version = "0.1.2"
-description = "Provide users with an easy-to-use interface to access data from the FMD API."
+version = "0.2.0"
+description = "Provides users with an easy-to-use interface to access data from the Financial Market Data (FMD) API, specializing in Taiwan's financial market."
 authors = ["Yu Chen, Yang <ycy.tai@gmail.com>"]
 readme = "README.md"
 homepage = "https://github.com/ycytai/fmd"
