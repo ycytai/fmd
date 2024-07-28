@@ -1,5 +1,3 @@
-from unittest.mock import MagicMock
-
 import pytest
 
 from fmd import FmdApi
@@ -173,7 +171,7 @@ class TestStock:
 class TestStockManager:
     @pytest.fixture(autouse=True)
     def setUp(self):
-        self.api = MagicMock(spec=FmdApi)
+        self.api = FmdApi()
         self.manager = StockManager(self.api)
         yield
 
@@ -186,3 +184,9 @@ class TestStockManager:
 
         mock_manager_get.assert_called_once_with(symbol=symbol)
         assert result == stock
+
+    def test_get_available_list(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'available_list'}
+        response = self.manager.get_available_list()
+        mock_fa_send_request.assert_called_once_with('get', '/stock')
+        assert response == {'data': 'available_list'}

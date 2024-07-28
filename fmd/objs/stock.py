@@ -92,5 +92,9 @@ class Stock(ObjectBase):
 class StockManager(ManagerBase):
     _obj = Stock
 
-    def get(cls, symbol: str) -> Stock:
-        return cast(cls._obj, super().get(symbol=symbol))
+    def get(self, symbol: str) -> Stock:
+        return cast(self._obj, super().get(symbol=symbol))
+
+    def get_available_list(self):
+        path = '/stock'
+        return self.fa.send_request('get', path)
