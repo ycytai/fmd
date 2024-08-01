@@ -18,13 +18,11 @@ repos:
     rev: 24.4.0
     hooks:
       - id: black
-        args: ['--skip-string-normalization']
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.0
     hooks:
       - id: isort
-        args: ["--profile", "black"]
 
   - repo: https://github.com/pycqa/flake8
     rev: 7.0.0
