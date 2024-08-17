@@ -1,5 +1,3 @@
-from unittest.mock import MagicMock
-
 import pytest
 
 from fmd import FmdApi
@@ -47,12 +45,12 @@ class TestEtf:
 class TestEtfManager:
     @pytest.fixture(autouse=True)
     def setUp(self):
-        self.api = MagicMock(spec=FmdApi)
+        self.api = FmdApi()
         self.manager = EtfManager(self.api)
         yield
 
     def test_get_etf(self, mock_manager_get) -> None:
-        symbol = '2330'
+        symbol = '0050'
         etf = Etf(symbol=symbol, manager=self.manager)
         mock_manager_get.return_value = etf
 
@@ -60,3 +58,9 @@ class TestEtfManager:
 
         mock_manager_get.assert_called_once_with(symbol=symbol)
         assert result == etf
+
+    def test_get_available_list(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'available_list'}
+        response = self.manager.get_available_list()
+        mock_fa_send_request.assert_called_once_with('get', '/etf')
+        assert response == {'data': 'available_list'}

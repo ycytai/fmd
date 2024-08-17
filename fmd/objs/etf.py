@@ -21,3 +21,7 @@ class EtfManager(ManagerBase):
 
     def get(cls, symbol: str) -> Etf:
         return cast(cls._obj, super().get(symbol=symbol))
+
+    def get_available_list(self):
+        path = '/etf'
+        return self.fa.send_request('get', path)
