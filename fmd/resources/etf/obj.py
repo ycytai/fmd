@@ -2,11 +2,13 @@ from datetime import date
 from typing import cast
 
 from fmd.base import ManagerBase, ObjectBase
-from fmd.resources.etf.types import ETFDividend
+from fmd.resources.etf.types import ETFDividend, ETFPrice, ETFProfile
 
 
 class ETF(ObjectBase):
-    def get_price(self, start_date: str | date | None = None, end_date: str | date | None = None):
+    def get_price(
+        self, start_date: str | date | None = None, end_date: str | date | None = None
+    ) -> list[ETFPrice]:
         path = f'/etf/{self.symbol}/price'
         params = {'start_date': start_date, 'end_date': end_date}
         return self.manger.fa.send_request('get', path, params=params)
@@ -25,6 +27,6 @@ class ETFManager(ManagerBase):
     def get(cls, symbol: str) -> ETF:
         return cast(cls._obj, super().get(symbol=symbol))
 
-    def get_available_list(self):
+    def get_available_list(self) -> list[ETFProfile]:
         path = '/etf'
         return self.fa.send_request('get', path)
