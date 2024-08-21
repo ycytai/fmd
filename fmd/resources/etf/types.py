@@ -1,7 +1,7 @@
 from fmd.backend import JsonDict
 
 
-class EtfDividend(JsonDict):
+class ETFDividend(JsonDict):
     symbol: str
     name: str
     ex_dividend_date: str

@@ -16,7 +16,7 @@ class FmdApi:
 
         # Resources
         self.stock = resources.StockManager(self)
-        self.etf = resources.EtfManager(self)
+        self.etf = resources.ETFManager(self)
 
     def send_request(
         self,
