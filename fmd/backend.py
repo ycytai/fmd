@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Any, TypedDict, TypeVar
 
 import requests
+from typing_extensions import Literal
 
 
 class RequestsBackend:
@@ -39,17 +40,17 @@ class ResponseStatus(str, Enum):
 
 
 class Response(TypedDict):
-    status: ResponseStatus
+    status: Literal[ResponseStatus.SUCCESS, ResponseStatus.FAIL]
     msg: str
 
 
 class SuccessResponse(Response):
-    status: ResponseStatus = ResponseStatus.SUCCESS
+    status: Literal[ResponseStatus.SUCCESS]
     data: list[T] | T | None
 
 
 class FailResponse(Response):
-    status: ResponseStatus = ResponseStatus.FAIL
+    status: Literal[ResponseStatus.FAIL]
 
 
 ResponseType = SuccessResponse | FailResponse

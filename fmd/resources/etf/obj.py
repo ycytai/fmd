@@ -2,7 +2,7 @@ from datetime import date
 from typing import cast
 
 from fmd.base import ManagerBase, ObjectBase
-from fmd.types import EtfDividend
+from fmd.resources.etf.types import EtfDividend
 
 
 class Etf(ObjectBase):

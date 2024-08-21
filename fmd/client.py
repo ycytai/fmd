@@ -12,11 +12,11 @@ class FmdApi:
         self._client = RequestsBackend()
 
         # NOTE: To avoid circular import
-        from fmd import objs
+        from fmd import resources
 
         # Resources
-        self.stock = objs.StockManager(self)
-        self.etf = objs.EtfManager(self)
+        self.stock = resources.StockManager(self)
+        self.etf = resources.EtfManager(self)
 
     def send_request(
         self,

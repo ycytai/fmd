@@ -1,7 +1,7 @@
 import pytest
 
 from fmd import FmdApi
-from fmd.objs import Etf, EtfManager
+from fmd.resources import Etf, EtfManager
 
 
 class TestEtf:

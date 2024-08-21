@@ -1,7 +1,7 @@
 import pytest
 
 from fmd import FmdApi
-from fmd.objs import Stock, StockManager
+from fmd.resources import Stock, StockManager
 
 
 class TestStock:
