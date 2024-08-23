@@ -1,4 +1,4 @@
-exclude: '.git'
+exclude: '.git|mkdocs.yml'
 default_stages: [commit]
 fail_fast: true
 

@@ -1,0 +1,43 @@
+site_name: fmd
+
+theme:
+  name: "material"
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - header.autohide
+    - search.suggest
+    - search.highlight
+
+repo_url: https://github.com/ycytai/fmd
+repo_name: ycytai/fmd
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: false
+            show_source: false
+  - search
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Reference:
+      - <code>Stock</code> Class: reference/stock.md
+      - <code>ETF</code> Class: reference/etf.md
+      - <code>Stock</code> Data Types: reference/stock-data-types.md
+      - <code>ETF</code> Data Types: reference/etf-data-types.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
