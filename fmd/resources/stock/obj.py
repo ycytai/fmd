@@ -2,6 +2,7 @@ from datetime import date
 from typing import cast
 
 from fmd.base import ManagerBase, ObjectBase
+from fmd.decorators import default_data_range
 from fmd.resources.stock.types import (
     BalanceSheet,
     FinancialRatio,
@@ -16,6 +17,8 @@ from fmd.resources.stock.types import (
 
 
 class Stock(ObjectBase):
+
+    @default_data_range(freq='daily', days=30)
     def get_price(
         self, start_date: str | date | None = None, end_date: str | date | None = None
     ) -> list[StockPrice]:
@@ -23,6 +26,7 @@ class Stock(ObjectBase):
         params = {'start_date': start_date, 'end_date': end_date}
         return self.manger.fa.send_request('get', path, params=params)
 
+    @default_data_range(freq='daily', days=30)
     def get_vm(
         self, start_date: str | date | None = None, end_date: str | date | None = None
     ) -> list[ValuationMeasurement]:
@@ -30,6 +34,7 @@ class Stock(ObjectBase):
         params = {'start_date': start_date, 'end_date': end_date}
         return self.manger.fa.send_request('get', path, params=params)
 
+    @default_data_range(freq='yearly', years=3)
     def get_dividend(
         self, start_year: int | None = None, end_year: int | None = None
     ) -> list[StockDividend]:
@@ -41,6 +46,7 @@ class Stock(ObjectBase):
         path = f'/stock/{self.symbol}/company'
         return self.manger.fa.send_request('get', path)
 
+    @default_data_range(freq='monthly', months=6)
     def get_revenue(
         self,
         start_year: int | None = None,
@@ -57,6 +63,7 @@ class Stock(ObjectBase):
         }
         return self.manger.fa.send_request('get', path, params=params)
 
+    @default_data_range(freq='quarterly', quarters=8)
     def get_financial_ratio(
         self,
         start_year: int | None = None,
@@ -73,6 +80,7 @@ class Stock(ObjectBase):
         }
         return self.manger.fa.send_request('get', path, params=params)
 
+    @default_data_range(freq='quarterly', quarters=8)
     def get_balance_sheet(
         self,
         start_year: int | None = None,
@@ -89,6 +97,7 @@ class Stock(ObjectBase):
         }
         return self.manger.fa.send_request('get', path, params=params)
 
+    @default_data_range(freq='quarterly', quarters=8)
     def get_income_statement(
         self,
         start_year: int | None = None,

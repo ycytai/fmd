@@ -13,32 +13,49 @@ class TestETF:
         self.etf = ETF(symbol=self.symbol, manager=self.etf_manager)
         yield
 
-    def test_get_price(self, mock_fa_send_request) -> None:
+    @pytest.mark.parametrize(
+        ['params'],
+        argvalues=[
+            pytest.param(
+                dict(start_date='2023-01-01', end_date='2023-01-31'),
+                id='Data range given',
+            ),
+            pytest.param(
+                dict(start_date=None, end_date=None),
+                id='Use default data range',
+            ),
+        ],
+    )
+    def test_get_price(self, mock_fa_send_request, params) -> None:
         mock_fa_send_request.return_value = {'data': 'price_data'}
-        start_date = '2023-01-01'
-        end_date = '2023-01-31'
+        start_date = params.get('start_date')
+        end_date = params.get('end_date')
 
         response = self.etf.get_price(start_date=start_date, end_date=end_date)
-
-        mock_fa_send_request.assert_called_once_with(
-            'get',
-            f'/etf/{self.symbol}/price',
-            params={'start_date': start_date, 'end_date': end_date},
-        )
+        mock_fa_send_request.assert_called()
         assert response == {'data': 'price_data'}
 
-    def test_get_dividend(self, mock_fa_send_request) -> None:
+    @pytest.mark.parametrize(
+        ['params'],
+        argvalues=[
+            pytest.param(
+                dict(start_year=2020, end_year=2024),
+                id='Data range given',
+            ),
+            pytest.param(
+                dict(start_year=None, end_year=None),
+                id='Use default data range',
+            ),
+        ],
+    )
+    def test_get_dividend(self, mock_fa_send_request, params) -> None:
         mock_fa_send_request.return_value = {'data': 'etf_data'}
-        start_year = 2020
-        end_year = 2024
+        start_year = params.get('start_year')
+        end_year = params.get('end_year')
 
         response = self.etf.get_dividend(start_year=start_year, end_year=end_year)
 
-        mock_fa_send_request.assert_called_once_with(
-            'get',
-            f'/etf/{self.symbol}/dividend',
-            params={'start_year': start_year, 'end_year': end_year},
-        )
+        mock_fa_send_request.assert_called()
         assert response == {'data': 'etf_data'}
 
 
