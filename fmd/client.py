@@ -1,7 +1,7 @@
 import time
 from typing import Any
 
-from fmd.backend import RequestsBackend
+from fmd.backend import RequestsBackend, ResponseStatus, ResponseType
 from fmd.exceptions import RequestError
 
 
@@ -12,11 +12,11 @@ class FmdApi:
         self._client = RequestsBackend()
 
         # NOTE: To avoid circular import
-        from fmd import objs
+        from fmd import resources
 
         # Resources
-        self.stock = objs.StockManager(self)
-        self.etf = objs.EtfManager(self)
+        self.stock = resources.StockManager(self)
+        self.etf = resources.ETFManager(self)
 
     def send_request(
         self,
@@ -40,11 +40,9 @@ class FmdApi:
                     secs = current_retries * 0.5
                     time.sleep(secs)
                     continue
-
                 raise
-
-            res_json = res.json()
-            if res.status_code == 200:
+            res_json: ResponseType = res.json()
+            if res_json.get('status') == ResponseStatus.SUCCESS:
                 return res_json.get('data')
             raise RequestError(status_code=res.status_code, msg=res_json.get('msg'))
 

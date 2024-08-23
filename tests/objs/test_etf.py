@@ -1,16 +1,16 @@
 import pytest
 
 from fmd import FmdApi
-from fmd.objs import Etf, EtfManager
+from fmd.resources import ETF, ETFManager
 
 
-class TestEtf:
+class TestETF:
     @pytest.fixture(autouse=True)
     def setUp(self):
         self.symbol = '0050'
         self.api = FmdApi()
-        self.etf_manager = EtfManager(self.api)
-        self.etf = Etf(symbol=self.symbol, manager=self.etf_manager)
+        self.etf_manager = ETFManager(self.api)
+        self.etf = ETF(symbol=self.symbol, manager=self.etf_manager)
         yield
 
     def test_get_price(self, mock_fa_send_request) -> None:
@@ -42,16 +42,16 @@ class TestEtf:
         assert response == {'data': 'etf_data'}
 
 
-class TestEtfManager:
+class TestETFManager:
     @pytest.fixture(autouse=True)
     def setUp(self):
         self.api = FmdApi()
-        self.manager = EtfManager(self.api)
+        self.manager = ETFManager(self.api)
         yield
 
     def test_get_etf(self, mock_manager_get) -> None:
         symbol = '0050'
-        etf = Etf(symbol=symbol, manager=self.manager)
+        etf = ETF(symbol=symbol, manager=self.manager)
         mock_manager_get.return_value = etf
 
         result = self.manager.get(symbol=symbol)
