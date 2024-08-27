@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "fmd"
 version = "0.2.0"
-description = "Provides users with an easy-to-use interface to access data from the Financial Market Data (FMD) API, specializing in Taiwan's financial market."
+description = "Download Taiwan financial market data via FMD API."
 authors = ["Yu Chen, Yang <ycy.tai@gmail.com>"]
 readme = "README.md"
 homepage = "https://github.com/ycytai/fmd"
@@ -15,6 +15,10 @@ requests = "^2.32.3"
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
 pre-commit = "^3.7.1"
+mkdocs = "^1.6.0"
+mkdocs-material = "^9.5.32"
+mkdocstrings = {extras = ["python"], version = "^0.25.2"}
+pygments = "^2.18.0"
 
 
 [tool.black]
