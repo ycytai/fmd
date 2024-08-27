@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 - --version 1.3.2
+        poetry config virtualenvs.create true
+        poetry config virtualenvs.in-project true
+        export PATH="$HOME/.local/bin:$PATH"
+
+    - name: Install dependencies
+      run: poetry install
+
+    - name: Build the project
+      run: poetry build
+
+    - name: Verify build artifacts
+      run: |
+        ls -l dist/
+        tar -tvf dist/*.tar.gz || unzip -l dist/*.whl

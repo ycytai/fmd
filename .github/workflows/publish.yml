@@ -1,0 +1,48 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        poetry config virtualenvs.create true
+        poetry config virtualenvs.in-project true
+        export PATH="$HOME/.local/bin:$PATH"
+
+    - name: Extract version from tag
+      id: extract_version
+      run: |
+        TAG=$(echo ${GITHUB_REF#refs/tags/})
+        echo "TAG_VERSION=$TAG" >> $GITHUB_ENV
+
+    - name: Update version in pyproject.toml
+      run: |
+        poetry version $TAG_VERSION
+
+    - name: Install dependencies
+      run: poetry install --no-root
+
+    - name: Build the project
+      run: poetry build
+
+    - name: Publish to PyPI
+      run: |
+        poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+        poetry publish
+
