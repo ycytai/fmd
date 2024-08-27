@@ -19,6 +19,7 @@ mkdocs = "^1.6.0"
 mkdocs-material = "^9.5.32"
 mkdocstrings = {extras = ["python"], version = "^0.25.2"}
 pygments = "^2.18.0"
+pytest = "^8.3.2"
 
 
 [tool.black]
