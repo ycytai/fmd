@@ -25,7 +25,7 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
 
     - name: Install dependencies
-      run: poetry install
+      run: poetry install --with dev
 
     - name: Run tests
       run: poetry run pytest --cov=fmd --cov-config=.coveragerc --cov-report term-missing:skip-covered -s

@@ -26,7 +26,7 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
 
     - name: Install dependencies
-      run: poetry install --no-root
+      run: poetry install --no-root --with dev
 
     - name: Build MkDocs site
       run: poetry run mkdocs build
