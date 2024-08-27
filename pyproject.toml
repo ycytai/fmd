@@ -1,5 +1,6 @@
 [tool.poetry]
 name = "fmd"
+version = "0.3.0"
 description = "Download Taiwan financial market data via FMD API."
 authors = ["Yu Chen, Yang <ycy.tai@gmail.com>"]
 readme = "README.md"
