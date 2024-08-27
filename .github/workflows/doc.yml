@@ -1,0 +1,44 @@
+name: Deploy Documentation
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 - --version 1.3.2
+        poetry config virtualenvs.create true
+        poetry config virtualenvs.in-project true
+        export PATH="$HOME/.local/bin:$PATH"
+
+    - name: Install dependencies
+      run: poetry install --no-root --with dev
+
+    - name: Build MkDocs site
+      run: poetry run mkdocs build
+
+    - name: Set up SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
+
+    - name: Copy site to server using SCP
+      run: |
+        scp -r site/* ${{ secrets.ACTION_USER }}@${{ secrets.LINODE_IP }}:/web/fmd
+      shell: bash

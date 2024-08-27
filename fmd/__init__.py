@@ -1,7 +1,5 @@
-import importlib.metadata
-
 from fmd.client import FmdApi
 
 package_name = 'fmd'
-__version__ = importlib.metadata.version(package_name)
+__version__ = '0.3.0'
 __all__ = ['FmdApi']

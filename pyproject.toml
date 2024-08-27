@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fmd"
-version = "0.2.0"
+version = "0.3.0"
 description = "Download Taiwan financial market data via FMD API."
 authors = ["Yu Chen, Yang <ycy.tai@gmail.com>"]
 readme = "README.md"
@@ -10,6 +10,7 @@ license = "Apache-2.0"
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "^2.32.3"
+typing-extensions = "^4.12.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -19,7 +20,9 @@ mkdocs = "^1.6.0"
 mkdocs-material = "^9.5.32"
 mkdocstrings = {extras = ["python"], version = "^0.25.2"}
 pygments = "^2.18.0"
-
+pytest = "^8.3.2"
+pytest-mock = "^3.14.0"
+pytest-cov = "^5.0.0"
 
 [tool.black]
 line-length = 100
