@@ -2,7 +2,9 @@
 
 **fmd** is a python wrapper that provides users with an easy-to-use interface to access data from Financial Market Data (FMD) API, specializing in Taiwan's financial market.
 
-**source code**: [https://github.com/ycytai/fmd](https://github.com/ycytai/fmd)
+**Source Code**: [https://github.com/ycytai/fmd](https://github.com/ycytai/fmd)
+
+**Documentation**: [https://fmd.ycytai.com/](https://fmd.ycytai.com/)
 
 ## Features
 
