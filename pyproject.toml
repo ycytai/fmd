@@ -20,7 +20,8 @@ mkdocs-material = "^9.5.32"
 mkdocstrings = {extras = ["python"], version = "^0.25.2"}
 pygments = "^2.18.0"
 pytest = "^8.3.2"
-
+pytest-mock = "^3.14.0"
+pytest-cov = "^5.0.0"
 
 [tool.black]
 line-length = 100
