@@ -1,9 +1,7 @@
 name: Deploy Documentation
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  workflow_dispatch:
 
 jobs:
   deploy:
