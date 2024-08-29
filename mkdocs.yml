@@ -24,9 +24,10 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Reference:
+      - Overview: reference/overview.md
       - <code>Stock</code> Class: reference/stock.md
-      - <code>ETF</code> Class: reference/etf.md
       - <code>Stock</code> Data Types: reference/stock-data-types.md
+      - <code>ETF</code> Class: reference/etf.md
       - <code>ETF</code> Data Types: reference/etf-data-types.md
 
 markdown_extensions:
