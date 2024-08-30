@@ -1,4 +1,3 @@
-
 ## [Stock](/reference/stock/#fmd.resources.stock.obj.Stock)
 
 |Data|Description|Frequency|
