@@ -1,4 +1,3 @@
-
 ## Basic Usage
 
 After initializing API, you can access various resources. Below is a simple example of retrieving stock prices.

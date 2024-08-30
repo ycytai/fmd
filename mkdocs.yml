@@ -19,14 +19,35 @@ plugins:
             show_root_heading: false
             show_source: false
   - search
+  - i18n:
+      docs_structure: folder
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: zh-TW
+          name: 繁體中文
+          build: true
+          nav:
+            - 首頁: index.md
+            - 入門指南: getting-started.md
+            - 參考文件:
+                - 資料總覽: reference/overview.md
+                - <code>Stock</code> 類別: reference/stock.md
+                - <code>Stock</code> 資料類型: reference/stock-data-types.md
+                - <code>ETF</code> 類別: reference/etf.md
+                - <code>ETF</code> 資料類型: reference/etf-data-types.md
+
 
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Reference:
+      - Data Overview: reference/overview.md
       - <code>Stock</code> Class: reference/stock.md
-      - <code>ETF</code> Class: reference/etf.md
       - <code>Stock</code> Data Types: reference/stock-data-types.md
+      - <code>ETF</code> Class: reference/etf.md
       - <code>ETF</code> Data Types: reference/etf-data-types.md
 
 markdown_extensions:
