@@ -23,6 +23,7 @@ pygments = "^2.18.0"
 pytest = "^8.3.2"
 pytest-mock = "^3.14.0"
 pytest-cov = "^5.0.0"
+mkdocs-static-i18n = {extras = ["material"], version = "^1.2.3"}
 
 [tool.black]
 line-length = 100
