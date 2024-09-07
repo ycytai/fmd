@@ -237,6 +237,25 @@ class Stock(ObjectBase):
         }
         return self.manger.fa.send_request('get', path, params=params)
 
+    @default_data_range(freq='daily', days=30)
+    def get_margin_balance(
+        self, start_date: str | date | None = None, end_date: str | date | None = None
+    ) -> list[StockPrice]:
+        """
+        Retrieves the margin balance data for the stock within the specified date range.
+        Default data range is last 30 days.
+
+        Parameters:
+            start_date (str | date | None): The start date for the price data.
+            end_date (str | date | None): The end date for the price data.
+
+        Returns:
+            A list of `MarginBalance` objects containing price information.
+        """
+        path = f'/stock/{self.symbol}/margin-balance'
+        params = {'start_date': start_date, 'end_date': end_date}
+        return self.manger.fa.send_request('get', path, params=params)
+
 
 class StockManager(ManagerBase):
     """

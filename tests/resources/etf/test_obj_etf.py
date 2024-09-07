@@ -58,6 +58,17 @@ class TestETF:
         mock_fa_send_request.assert_called()
         assert response == {'data': 'etf_data'}
 
+    def test_get_profile(self, mock_fa_send_request) -> None:
+        mock_fa_send_request.return_value = {'data': 'profile_data'}
+
+        response = self.etf.get_profile()
+
+        mock_fa_send_request.assert_called_once_with(
+            'get',
+            f'/etf/{self.symbol}/profile',
+        )
+        assert response == {'data': 'profile_data'}
+
 
 class TestETFManager:
     @pytest.fixture(autouse=True)

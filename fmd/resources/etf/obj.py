@@ -66,6 +66,16 @@ class ETF(ObjectBase):
         params = {'start_year': start_year, 'end_year': end_year}
         return self.manger.fa.send_request('get', path, params=params)
 
+    def get_profile(self) -> list[ETFProfile]:
+        """
+        Retrieves the profile for the ETF.
+
+        Returns:
+            A `ETFProfile` object containing the profile information of the ETF.
+        """
+        path = f'/etf/{self.symbol}/profile'
+        return self.manger.fa.send_request('get', path)
+
 
 class ETFManager(ManagerBase):
     """
