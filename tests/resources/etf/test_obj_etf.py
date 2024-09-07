@@ -69,6 +69,28 @@ class TestETF:
         )
         assert response == {'data': 'profile_data'}
 
+    @pytest.mark.parametrize(
+        ['params'],
+        argvalues=[
+            pytest.param(
+                dict(start_date='2023-01-01', end_date='2023-01-31'),
+                id='Data range given',
+            ),
+            pytest.param(
+                dict(start_date=None, end_date=None),
+                id='Use default data range',
+            ),
+        ],
+    )
+    def test_get_margin_balance(self, mock_fa_send_request, params) -> None:
+        mock_fa_send_request.return_value = {'data': 'margin_balance'}
+        start_date = params.get('start_date')
+        end_date = params.get('end_date')
+
+        response = self.etf.get_margin_balance(start_date=start_date, end_date=end_date)
+        mock_fa_send_request.assert_called()
+        assert response == {'data': 'margin_balance'}
+
 
 class TestETFManager:
     @pytest.fixture(autouse=True)

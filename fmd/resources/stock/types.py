@@ -334,7 +334,7 @@ class IncomeStatement(JsonDict):
     net_income: str
 
 
-class MarginBalance(JsonDict):
+class StockMarginBalance(JsonDict):
     """
     Attributes:
         date (str): Date of the margin balance data.

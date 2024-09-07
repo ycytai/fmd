@@ -3,7 +3,7 @@ from typing import cast
 
 from fmd.base import ManagerBase, ObjectBase
 from fmd.decorators import default_data_range
-from fmd.resources.etf.types import ETFDividend, ETFPrice, ETFProfile
+from fmd.resources.etf.types import ETFDividend, ETFMarginBalance, ETFPrice, ETFProfile
 
 
 class ETF(ObjectBase):
@@ -75,6 +75,25 @@ class ETF(ObjectBase):
         """
         path = f'/etf/{self.symbol}/profile'
         return self.manger.fa.send_request('get', path)
+
+    @default_data_range(freq='daily', days=30)
+    def get_margin_balance(
+        self, start_date: str | date | None = None, end_date: str | date | None = None
+    ) -> list[ETFMarginBalance]:
+        """
+        Retrieves the margin balance data for the stock within the specified date range.
+        Default data range is last 30 days.
+
+        Parameters:
+            start_date (str | date | None): The start date for data.
+            end_date (str | date | None): The end date for data.
+
+        Returns:
+            A list of `ETFMarginBalance` objects containing margin balance information.
+        """
+        path = f'/etf/{self.symbol}/margin-balance'
+        params = {'start_date': start_date, 'end_date': end_date}
+        return self.manger.fa.send_request('get', path, params=params)
 
 
 class ETFManager(ManagerBase):
