@@ -233,6 +233,30 @@ class TestStock:
         mock_fa_send_request.assert_called()
         assert response == {'data': 'margin_balance_data'}
 
+    @pytest.mark.parametrize(
+        ['params'],
+        argvalues=[
+            pytest.param(
+                dict(start_date='2023-01-01', end_date='2023-01-31'),
+                id='Data range given',
+            ),
+            pytest.param(
+                dict(start_date=None, end_date=None),
+                id='Use default data range',
+            ),
+        ],
+    )
+    def test_get_institution_trade_summary(self, mock_fa_send_request, params) -> None:
+        mock_fa_send_request.return_value = {'data': 'institution_trade_summary'}
+        start_date = params.get('start_date')
+        end_date = params.get('end_date')
+
+        response = self.stock.get_institution_trade_summary(
+            start_date=start_date, end_date=end_date
+        )
+        mock_fa_send_request.assert_called()
+        assert response == {'data': 'institution_trade_summary'}
+
 
 class TestStockManager:
     @pytest.fixture(autouse=True)

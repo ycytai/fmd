@@ -10,6 +10,7 @@ from fmd.resources.stock.types import (
     Revenue,
     StockCompany,
     StockDividend,
+    StockInstitutionTradeSummary,
     StockMarginBalance,
     StockPrice,
     StockProfile,
@@ -254,6 +255,25 @@ class Stock(ObjectBase):
             A list of `StockMarginBalance` objects containing margin balance information.
         """
         path = f'/stock/{self.symbol}/margin-balance'
+        params = {'start_date': start_date, 'end_date': end_date}
+        return self.manger.fa.send_request('get', path, params=params)
+
+    @default_data_range(freq='daily', days=30)
+    def get_institution_trade_summary(
+        self, start_date: str | date | None = None, end_date: str | date | None = None
+    ) -> list[StockInstitutionTradeSummary]:
+        """
+        Retrieves the institution trade summary for the stock within the specified date range.
+        Default data range is last 30 days.
+
+        Parameters:
+            start_date (str | date | None): The start date for data.
+            end_date (str | date | None): The end date for data.
+
+        Returns:
+            A list of `StockInstitutionTradeSummary` objects containing institutions trade summary.
+        """
+        path = f'/stock/{self.symbol}/institution-trade-summary'
         params = {'start_date': start_date, 'end_date': end_date}
         return self.manger.fa.send_request('get', path, params=params)
 
