@@ -332,3 +332,55 @@ class IncomeStatement(JsonDict):
     operating_income: str
     pre_tax_income: str
     net_income: str
+
+
+class StockMarginBalance(JsonDict):
+    """
+    Attributes:
+        date (str): Date of the margin balance data.
+        symbol (str): Stock symbol.
+        margin_buy (int): Total amount of margin buying.
+        margin_sell (int): Total amount of margin selling.
+        margin_cash_repayment (int): Cash repayment amount for margin accounts.
+        today_margin_balance (int): Current margin balance for the day.
+        margin_limit_for_next_day (int): Margin limit available for the next trading day.
+        short_sale_buy (int): Total amount of short sale buying.
+        short_sale_sell (int): Total amount of short sale selling.
+        short_sale_stock_repayment (int): Number of stocks repaid in short sales.
+        today_short_sale_balance (int): Current balance of short sales for the day.
+        short_sale_limit_for_next_day (int): Limit on short sales for the next trading day.
+        short_sale_and_margin_offset (int): Offset combining short sales and margin balances.
+
+    Example:
+        ```json
+        {
+            "date": "2024-08-08",
+            "symbol": "2330",
+            "margin_buy": 1579,
+            "margin_sell": 1148,
+            "margin_cash_repayment": 68,
+            "today_margin_balance": 32304,
+            "margin_limit_for_next_day": 6483407,
+            "short_sale_buy": 157,
+            "short_sale_sell": 56,
+            "short_sale_stock_repayment": 1,
+            "today_short_sale_balance": 433,
+            "short_sale_limit_for_next_day": 6483407,
+            "short_sale_and_margin_offset": 19
+        }
+        ```
+    """
+
+    date: str
+    symbol: str
+    margin_buy: int
+    margin_sell: int
+    margin_cash_repayment: int
+    today_margin_balance: int
+    margin_limit_for_next_day: int
+    short_sale_buy: int
+    short_sale_sell: int
+    short_sale_stock_repayment: int
+    today_short_sale_balance: int
+    short_sale_limit_for_next_day: int
+    short_sale_and_margin_offset: int

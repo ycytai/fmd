@@ -4,6 +4,7 @@
 |---|---|---|
 |[StockPrice](/reference/stock-data-types/#fmd.resources.stock.types.StockPrice)|Daily stock prices including open, high, low, close, and volume|Daily|
 |[ValuationMeasurement](/reference/stock-data-types/#fmd.resources.stock.types.ValuationMeasurement)|PE ratio, PB ratio, and dividend yield|Daily|
+|[StockMarginBalance](/reference/stock-data-types/#fmd.resources.stock.types.StockMarginBalance)|Margin related info, buy, sell and balances.|Daily|
 |[Revenue](/reference/stock-data-types/#fmd.resources.stock.types.Revenue)|Monthly revenue, with comparisons to previous periods|Monthly|
 |[FinancialRatio](/reference/stock-data-types/#fmd.resources.stock.types.FinancialRatio)|Profit margins and other key financial ratios|Quarterly|
 |[BalanceSheet](/reference/stock-data-types/#fmd.resources.stock.types.BalanceSheet)|Data on assets, liabilities, equity, and capital|Quarterly|
@@ -15,5 +16,7 @@
 
 |Data|Description|Frequency|
 |---|---|---|
-|[ETFPrice](/reference/etf-data-types/#fmd.resources.etf.types.ETFPrice)|Daily stock prices including open, high, low, close, and volume|Daily|
+|[ETFPrice](/reference/etf-data-types/#fmd.resources.etf.types.ETFPrice)|Daily ETF prices including open, high, low, close, and volume|Daily|
+|[ETFMarginBalance](/reference/stock-data-types/#fmd.resources.stock.types.ETFMarginBalance)|Margin related info, buy, sell and balances.|Daily|
 |[ETFDividend](/reference/etf-data-types/#fmd.resources.etf.types.ETFDividend)|Dividend amounts, ex-dividend dates and more|Yearly|
+|[ETFProfile](/reference/etf-data-types/#fmd.resources.etf.types.ETFProfile)|Basic info of ETF|-|

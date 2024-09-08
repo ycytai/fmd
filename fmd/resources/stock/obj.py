@@ -10,6 +10,7 @@ from fmd.resources.stock.types import (
     Revenue,
     StockCompany,
     StockDividend,
+    StockMarginBalance,
     StockPrice,
     StockProfile,
     ValuationMeasurement,
@@ -235,6 +236,25 @@ class Stock(ObjectBase):
             'end_year': end_year,
             'end_quarter': end_quarter,
         }
+        return self.manger.fa.send_request('get', path, params=params)
+
+    @default_data_range(freq='daily', days=30)
+    def get_margin_balance(
+        self, start_date: str | date | None = None, end_date: str | date | None = None
+    ) -> list[StockMarginBalance]:
+        """
+        Retrieves the margin balance data for the stock within the specified date range.
+        Default data range is last 30 days.
+
+        Parameters:
+            start_date (str | date | None): The start date for the data.
+            end_date (str | date | None): The end date for the data.
+
+        Returns:
+            A list of `StockMarginBalance` objects containing margin balance information.
+        """
+        path = f'/stock/{self.symbol}/margin-balance'
+        params = {'start_date': start_date, 'end_date': end_date}
         return self.manger.fa.send_request('get', path, params=params)
 
 
