@@ -81,7 +81,7 @@ class ETF(ObjectBase):
         self, start_date: str | date | None = None, end_date: str | date | None = None
     ) -> list[ETFMarginBalance]:
         """
-        Retrieves the margin balance data for the stock within the specified date range.
+        Retrieves the margin balance data for the ETF within the specified date range.
         Default data range is last 30 days.
 
         Parameters:
