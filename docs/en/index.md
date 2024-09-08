@@ -30,3 +30,7 @@ fa = FmdApi()
 stock = fa.stock.get(symbol='2330')
 data = stock.get_price()
 ```
+
+## Feedback and Bugs Report
+
+Feel free to raise a issue once you found any specious errors or encounter an unknown situation. We cherish your feedback, your insights are invaluable as we continuously strive to improve our service. Fill this [form](https://forms.gle/mv3zY5nkDeupE6zL9) to give your feedback. Cheers.
