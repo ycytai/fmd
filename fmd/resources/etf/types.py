@@ -153,3 +153,34 @@ class ETFMarginBalance(JsonDict):
     today_short_sale_balance: int
     short_sale_limit_for_next_day: int
     short_sale_and_margin_offset: int
+
+
+class ETFInstitutionTradeSummary(JsonDict):
+    """
+    Attributes:
+        date (str): Date of the margin balance data.
+        symbol (str): ETF symbol.
+        foreign_dealer_net (int): Net buy/sell amount by foreign dealers.
+        proprietary_net (int): Net buy/sell amount by proprietary firms.
+        security_investment_trust_net (int): Net buy/sell amount by security investment trusts.
+        sum_of_net (int): Total net buy/sell amount.
+
+    Example:
+        ```json
+        {
+            "date": "2024-08-30",
+            "symbol": "0050",
+            "foreign_dealer_net": -2393566,
+            "proprietary_net": 66457,
+            "security_investment_trust_net": 113000,
+            "sum_of_net": -2214109
+        }
+        ```
+    """
+
+    date: str
+    symbol: str
+    foreign_dealer_net: int
+    proprietary_net: int
+    security_investment_trust_net: int
+    sum_of_net: int

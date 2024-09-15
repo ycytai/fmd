@@ -3,7 +3,13 @@ from typing import cast
 
 from fmd.base import ManagerBase, ObjectBase
 from fmd.decorators import default_data_range
-from fmd.resources.etf.types import ETFDividend, ETFMarginBalance, ETFPrice, ETFProfile
+from fmd.resources.etf.types import (
+    ETFDividend,
+    ETFInstitutionTradeSummary,
+    ETFMarginBalance,
+    ETFPrice,
+    ETFProfile,
+)
 
 
 class ETF(ObjectBase):
@@ -66,7 +72,7 @@ class ETF(ObjectBase):
         params = {'start_year': start_year, 'end_year': end_year}
         return self.manger.fa.send_request('get', path, params=params)
 
-    def get_profile(self) -> list[ETFProfile]:
+    def get_profile(self) -> ETFProfile:
         """
         Retrieves the profile for the ETF.
 
@@ -92,6 +98,25 @@ class ETF(ObjectBase):
             A list of `ETFMarginBalance` objects containing margin balance information.
         """
         path = f'/etf/{self.symbol}/margin-balance'
+        params = {'start_date': start_date, 'end_date': end_date}
+        return self.manger.fa.send_request('get', path, params=params)
+
+    @default_data_range(freq='daily', days=30)
+    def get_institution_trade_summary(
+        self, start_date: str | date | None = None, end_date: str | date | None = None
+    ) -> list[ETFInstitutionTradeSummary]:
+        """
+        Retrieves the institution trade summary for the ETF within the specified date range.
+        Default data range is last 30 days.
+
+        Parameters:
+            start_date (str | date | None): The start date for data.
+            end_date (str | date | None): The end date for data.
+
+        Returns:
+            A list of `ETFInstitutionTradeSummary` objects containing institutions trade summary.
+        """
+        path = f'/etf/{self.symbol}/institution-trade-summary'
         params = {'start_date': start_date, 'end_date': end_date}
         return self.manger.fa.send_request('get', path, params=params)
 
