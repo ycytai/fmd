@@ -38,6 +38,8 @@ plugins:
                 - <code>Stock</code> 資料類型: reference/stock-data-types.md
                 - <code>ETF</code> 類別: reference/etf.md
                 - <code>ETF</code> 資料類型: reference/etf-data-types.md
+                - <code>Index</code> 類別: reference/index.md
+                - <code>Index</code> 資料類型: reference/index-data-types.md
 
 
 nav:
@@ -49,6 +51,8 @@ nav:
       - <code>Stock</code> Data Types: reference/stock-data-types.md
       - <code>ETF</code> Class: reference/etf.md
       - <code>ETF</code> Data Types: reference/etf-data-types.md
+      - <code>Index</code> Class: reference/index.md
+      - <code>Index</code> Data Types: reference/index-data-types.md
 
 markdown_extensions:
   - pymdownx.highlight:

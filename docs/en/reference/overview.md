@@ -22,3 +22,10 @@
 |[ETFInstitutionTradeSummary](/reference/stock-data-types/#fmd.resources.stock.types.ETFInstitutionTradeSummary)|Trade summary of institutional investors like foreign dealers, proprietary, ...|Daily|
 |[ETFDividend](/reference/etf-data-types/#fmd.resources.etf.types.ETFDividend)|Dividend amounts, ex-dividend dates and more|Yearly|
 |[ETFProfile](/reference/etf-data-types/#fmd.resources.etf.types.ETFProfile)|Basic info of ETF|-|
+
+
+## [Index](/reference/index/#fmd.resources.index.obj.Index)
+|Data|Description|Frequency|
+|---|---|---|
+|[IndexPrice](/reference/index-data-types/#fmd.resources.index.types.IndexPrice)|Daily Index prices including open, high, low, close, and volume|Daily|
+|[IndexProfile](/reference/index-data-types/#fmd.resources.index.types.IndexProfile)|Basic info of Index|-|

@@ -1,4 +1,4 @@
-## [Stock](/reference/stock/#fmd.resources.stock.obj.Stock)
+## [股票 Stock](/reference/stock/#fmd.resources.stock.obj.Stock)
 
 |資料|描述|頻率|
 |---|---|---|
@@ -22,3 +22,9 @@
 |[ETFInstitutionTradeSummary](/reference/stock-data-types/#fmd.resources.stock.types.ETFInstitutionTradeSummary)|三大法人買賣超|日|
 |[ETFDividend](/reference/etf-data-types/#fmd.resources.etf.types.ETFDividend)|股息金額、除息日等|年|
 |[ETFProfile](/reference/etf-data-types/#fmd.resources.etf.types.ETFProfile)|ETF相關基本資料|-|
+
+## [指數 Index](/reference/index/#fmd.resources.index.obj.Index)
+|資料|描述|頻率|
+|---|---|---|
+|[IndexPrice](/reference/index-data-types/#fmd.resources.index.types.IndexPrice)|每日指數價格，包括開盤價、最高價、最低價、收盤價和成交量|日|
+|[IndexProfile](/reference/index-data-types/#fmd.resources.index.types.IndexProfile)|指數相關基本資料|-|
