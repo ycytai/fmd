@@ -1,0 +1,1 @@
+::: fmd.resources.index.types
