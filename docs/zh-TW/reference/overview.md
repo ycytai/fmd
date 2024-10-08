@@ -10,6 +10,7 @@
 |[FinancialRatio](/reference/stock-data-types/#fmd.resources.stock.types.FinancialRatio)|財務比率相關資料，例如毛利率|季|
 |[BalanceSheet](/reference/stock-data-types/#fmd.resources.stock.types.BalanceSheet)|資產、負債、股東權益及資本資料|季|
 |[IncomeStatement](/reference/stock-data-types/#fmd.resources.stock.types.IncomeStatement)|營收、毛利、營業收入及淨利等資料|季|
+|[CashFlowStatement](/reference/stock-data-types/#fmd.resources.stock.types.CashFlowStatement)|營業活動、投資活動及籌資活動淨現金流量等資料|季|
 |[StockDividend](/reference/stock-data-types/#fmd.resources.stock.types.StockDividend)|股利詳情，包括金額、除息日和支付日期|年|
 |[StockCompany](/reference/stock-data-types/#fmd.resources.stock.types.StockCompany)|公司資訊，如名稱、產業、市場類別及資本額等|-|
 
