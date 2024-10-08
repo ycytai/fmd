@@ -415,3 +415,43 @@ class StockInstitutionTradeSummary(JsonDict):
     proprietary_net: int
     security_investment_trust_net: int
     sum_of_net: int
+
+
+class CashFlowStatement(JsonDict):
+    """
+    Attributes:
+        symbol (str): Stock symbol.
+        year (int): Year of the cash flow statement data.
+        quarter (int): Quarter of the cash flow data.
+        operating_ncf (str): Operating net cash flow.
+        investing_ncf (str): Investing net cash flow.
+        financing_ncf (str): Financing net cash flow.
+        change_of_cash (str): Change of cash.
+        period_start_cash (str): Cash at the start of the period.
+        period_end_cash (str): Cash at the end of the period.
+
+    Example:
+        ```json
+        {
+            "symbol": "2330",
+            "year": 2021,
+            "quarter": 1,
+            "operating_ncf": "227815706.00",
+            "investing_ncf": "-244251414.00",
+            "financing_ncf": "14618457.00",
+            "change_of_cash": "4557210.00",
+            "period_start_cash": "660170647.00",
+            "period_end_cash": "664727857.00"
+        }
+        ```
+    """
+
+    symbol: str
+    year: int
+    quarter: int
+    operating_ncf: str
+    investing_ncf: str
+    financing_ncf: str
+    change_of_cash: str
+    period_start_cash: str
+    period_end_cash: str
