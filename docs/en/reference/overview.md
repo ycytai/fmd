@@ -10,6 +10,7 @@
 |[FinancialRatio](/reference/stock-data-types/#fmd.resources.stock.types.FinancialRatio)|Profit margins and other key financial ratios|Quarterly|
 |[BalanceSheet](/reference/stock-data-types/#fmd.resources.stock.types.BalanceSheet)|Data on assets, liabilities, equity, and capital|Quarterly|
 |[IncomeStatement](/reference/stock-data-types/#fmd.resources.stock.types.IncomeStatement)|Details on revenue, gross profit, operating income, and net income|Quarterly|
+|[CashFlowStatement](/reference/stock-data-types/#fmd.resources.stock.types.CashFlowStatement)|Net cash flow of operating, investing and financing|Quarterly|
 |[StockDividend](/reference/stock-data-types/#fmd.resources.stock.types.StockDividend)|Dividend details including amounts, ex-dividend dates, and payment dates|Yearly|
 |[StockCompany](/reference/stock-data-types/#fmd.resources.stock.types.StockCompany)|Company info like name, industry, market category, and capital|-|
 
