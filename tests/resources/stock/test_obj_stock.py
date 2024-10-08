@@ -257,6 +257,36 @@ class TestStock:
         mock_fa_send_request.assert_called()
         assert response == {'data': 'institution_trade_summary'}
 
+    @pytest.mark.parametrize(
+        ['params'],
+        argvalues=[
+            pytest.param(
+                dict(start_year=2022, start_quarter=1, end_year=2023, end_quarter=4),
+                id='Data range given',
+            ),
+            pytest.param(
+                dict(start_year=None, start_quarter=None, end_year=None, end_quarter=None),
+                id='Use default data range',
+            ),
+        ],
+    )
+    def test_get_cash_flow_statement(self, mock_fa_send_request, params) -> None:
+        mock_fa_send_request.return_value = {'data': 'cash_flow_statement'}
+        start_year = params.get('start_year')
+        start_quarter = params.get('start_quarter')
+        end_year = params.get('end_year')
+        end_quarter = params.get('end_quarter')
+
+        response = self.stock.get_cash_flow_statement(
+            start_year=start_year,
+            start_quarter=start_quarter,
+            end_year=end_year,
+            end_quarter=end_quarter,
+        )
+
+        mock_fa_send_request.assert_called()
+        assert response == {'data': 'cash_flow_statement'}
+
 
 class TestStockManager:
     @pytest.fixture(autouse=True)

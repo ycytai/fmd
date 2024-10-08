@@ -5,6 +5,7 @@ from fmd.base import ManagerBase, ObjectBase
 from fmd.decorators import default_data_range
 from fmd.resources.stock.types import (
     BalanceSheet,
+    CashFlowStatement,
     FinancialRatio,
     IncomeStatement,
     Revenue,
@@ -50,6 +51,12 @@ class Stock(ObjectBase):
             Retrieves the balance sheet data for the stock within the specified date range.
         get_income_statement(start_year, start_quarter, end_year, end_quarter):
             Retrieves the income statement data for the stock within the specified date range.
+        get_margin_balance(start_date, end_date):
+            Retrieves the margin balance data for the stock within the specified date range.
+        get_institution_trade_summary(start_date, end_date):
+            Retrieves the institution trade summary for the stock within the specified date range.
+        get_cash_flow_statement(start_year, start_quarter, end_year, end_quarter):
+            Retrieves the cash flow statement data for the stock within the specified date range.
     """
 
     @default_data_range(freq='daily', days=30)
@@ -275,6 +282,36 @@ class Stock(ObjectBase):
         """
         path = f'/stock/{self.symbol}/institution-trade-summary'
         params = {'start_date': start_date, 'end_date': end_date}
+        return self.manger.fa.send_request('get', path, params=params)
+
+    @default_data_range(freq='quarterly', quarters=8)
+    def get_cash_flow_statement(
+        self,
+        start_year: int | None = None,
+        start_quarter: int | None = None,
+        end_year: int | None = None,
+        end_quarter: int | None = None,
+    ) -> list[CashFlowStatement]:
+        """
+        Retrieves the cash flow statement data for the stock within the specified date range.
+        Default data range is last 8 quarters.
+
+        Parameters:
+            start_year (int | None): The start year for the cash flow statement data.
+            start_quarter (int | None): The start quarter for the cash flow statement data.
+            end_year (int | None): The end year for the cash flow statement data.
+            end_quarter (int | None): The end quarter for the cash flow statement data.
+
+        Returns:
+            A list of `CashFlowStatement` objects containing cash flow statement information.
+        """
+        path = f'/stock/{self.symbol}/cash-flow-statement'
+        params = {
+            'start_year': start_year,
+            'start_quarter': start_quarter,
+            'end_year': end_year,
+            'end_quarter': end_quarter,
+        }
         return self.manger.fa.send_request('get', path, params=params)
 
 
