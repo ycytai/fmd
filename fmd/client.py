@@ -7,7 +7,7 @@ from fmd.exceptions import RequestError
 
 class FmdApi:
     def __init__(self, version: str = '1') -> None:
-        self._base_url = 'https://fmarketdata.com'
+        self._base_url = 'https://api.fmarketdata.com'
         self._url = f'{self._base_url}/api/v{version}'
         self._client = RequestsBackend()
 
