@@ -18,6 +18,7 @@ class FmdApi:
         self.stock = resources.StockManager(self)
         self.etf = resources.ETFManager(self)
         self.index = resources.IndexManager(self)
+        self.forex = resources.ForexManager(self)
 
     def send_request(
         self,

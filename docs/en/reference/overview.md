@@ -30,3 +30,10 @@
 |---|---|---|
 |[IndexPrice](/reference/index-data-types/#fmd.resources.index.types.IndexPrice)|Daily Index prices including open, high, low, close, and volume|Daily|
 |[IndexProfile](/reference/index-data-types/#fmd.resources.index.types.IndexProfile)|Basic info of Index|-|
+
+
+## [Forex](/reference/forex/#fmd.resources.forex.obj.Forex)
+|Data|Description|Frequency|
+|---|---|---|
+|[ForexRate](/reference/forex-data-types/#fmd.resources.forex.types.ForexRate)|Daily exchange rate of the base currency|Daily|
+|[ForexProfile](/reference/forex-data-types/#fmd.resources.forex.types.ForexProfile)|Basic info of currency|-|

@@ -31,6 +31,23 @@ stock = fa.stock.get(symbol='2330')
 data = stock.get_price()
 ```
 
+## 更多範例
+
+使用各種不同資源
+```python
+from fmd import FmdApi
+
+fa = FmdApi()
+
+stock = fa.stock.get(symbol='2330')
+
+etf = fa.etf.get(symbol='0050')
+
+index = fa.index.get(symbol='LI0001')
+
+currency = fa.forex.get(currency='TWD')
+```
+
 ## 回饋和問題回報
 
-若在使用上發現奇怪的錯誤或是遇到未知的狀況，可以直接在 Github Issues 中提出，我們珍視使用者的回饋，您的建議對於改善服務是至關重要的，也能透過填寫這個[表單](https://forms.gle/mv3zY5nkDeupE6zL9)提供回饋，謝謝。
+若在使用上發現遇到未知的狀況，可以直接在 Github Issues 中提出，我們珍視使用者的回饋，謝謝。
