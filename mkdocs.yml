@@ -40,6 +40,8 @@ plugins:
                 - <code>ETF</code> 資料類型: reference/etf-data-types.md
                 - <code>Index</code> 類別: reference/index.md
                 - <code>Index</code> 資料類型: reference/index-data-types.md
+                - <code>Forex</code> 類別: reference/forex.md
+                - <code>Forex</code> 資料類型: reference/forex-data-types.md
 
 
 nav:
@@ -53,6 +55,8 @@ nav:
       - <code>ETF</code> Data Types: reference/etf-data-types.md
       - <code>Index</code> Class: reference/index.md
       - <code>Index</code> Data Types: reference/index-data-types.md
+      - <code>Forex</code> Class: reference/forex.md
+      - <code>Forex</code> Data Types: reference/forex-data-types.md
 
 markdown_extensions:
   - pymdownx.highlight:
