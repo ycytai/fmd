@@ -1,5 +1,13 @@
 # fmd
 
+---
+
+**⚠️ NOTICE:**
+
+FMD API will stop service after March 14, 2025. Additionally, this repository will be archived and no longer maintained after March 14, 2025. Thanks for your support.
+
+---
+
 **fmd** is a python wrapper that provides users with an easy-to-use interface to access data from Financial Market Data (FMD) API, specializing in Taiwan's financial market.
 
 **Source Code**: [https://github.com/ycytai/fmd](https://github.com/ycytai/fmd)
