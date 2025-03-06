@@ -1,5 +1,14 @@
 # fmd
 
+---
+
+**⚠️ 注意:**
+
+FMD API 將於 2025 年 3 月 14 日後停止服務。此外，該儲存庫將於 2025 年 3 月 14 日後進行封存並不再維護。感謝您的支持。
+
+---
+
+
 **fmd** 是一個 Python Wrapper，提供用戶簡單的使用介面從 FMD API 獲取數據，專注於臺灣的金融市場相關資料。
 
 **程式碼**: [https://github.com/ycytai/fmd](https://github.com/ycytai/fmd)
